@@ -38,3 +38,12 @@ jobs:
                   git config --global user.name "Github Actions"
                   ./gradlew applyPatches --stacktrace
                   ./gradlew build --stacktrace
+            - name: Build Jar
+              run: |
+                    ./gradlew reobfJar
+            - name: Upload Jar files
+              uses: actions/upload-artifact@v2
+              with:
+                    name: paper2jar
+                    path: |
+                        ./Paper-Server/build/libs        
